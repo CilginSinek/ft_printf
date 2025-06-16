@@ -58,5 +58,8 @@ jobs:
       #    Bu sayede "Use francinette or paco inside a project folder to run it" kuralına uyuyoruz.
       - name: Run francinette tests
         working-directory: ${{ github.workspace }}
+        env:
+            TERM: dumb
+            PYTHONUNBUFFERED: 1
         run: |
-          $HOME/francinette/tester.sh
+            $HOME/francinette/tester.sh
