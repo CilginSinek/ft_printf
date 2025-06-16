@@ -62,4 +62,5 @@ jobs:
             TERM: dumb
             PYTHONUNBUFFERED: 1
         run: |
-            $HOME/francinette/tester.sh
+            sudo apt-get install -y util-linux
+            script -q -c "$HOME/francinette/tester.sh" /dev/null
