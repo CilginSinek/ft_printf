@@ -6,11 +6,12 @@
 /*   By: iduman <iduman@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 16:58:18 by iduman            #+#    #+#             */
-/*   Updated: 2025/06/16 18:54:38 by iduman           ###   ########.fr       */
+/*   Updated: 2025/06/18 18:56:10 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "myprintf.h"
+#include "ft_printf.h"
+#include <stdio.h>
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -34,6 +35,8 @@ void	ft_putchar_counter(char c, int *count)
 
 void	ft_putstr_counter(const char *c, int *count)
 {
+	if (c == NULL)
+		return (ft_putstr_counter("(null)", count));
 	while (*c)
 	{
 		ft_putchar_counter(*c, count);
@@ -41,9 +44,9 @@ void	ft_putstr_counter(const char *c, int *count)
 	}
 }
 
-void	ft_putnbr_counter(int n, int *count)
+void	ft_putnbr_counter(long long n, int *count)
 {
-	long	nbr;
+	long long	nbr;
 
 	nbr = n;
 	if (nbr < 0)
@@ -63,22 +66,30 @@ void	ft_putnbr_counter(int n, int *count)
 	}
 }
 
-void	ft_puthex_counter(int n, int *count, char *base)
+void	ft_puthex_counter(unsigned int n, int *count, char *base)
 {
-	long long	nbr;
+	int	temp;
+	int	turn;
 
-	nbr = n;
-	if (nbr < 0)
+	if (n < 0)
 	{
-		nbr *= -1;
-		ft_putchar_counter('-', count);
-	}
-	if (nbr >= 16)
-	{
-		ft_puthex_counter(nbr / 16, count, base);
-		ft_putchar_counter(base[nbr % 16], count);
-		nbr /= 16;
+		turn = 4;
+		while (turn--)
+		{
+			temp = *(((unsigned char *)(&n)) + turn);
+			ft_putchar_counter(base[(temp / 16) % 16], count);
+			ft_putchar_counter(base[temp % 16], count);
+		}
 	}
 	else
-		ft_putchar_counter(base[nbr % 16], count);
+	{
+		if (n >= 16)
+		{
+			ft_puthex_counter(n / 16, count, base);
+			ft_putchar_counter(base[n % 16], count);
+			n /= 16;
+		}
+		else
+			ft_putchar_counter(base[n % 16], count);
+	}
 }

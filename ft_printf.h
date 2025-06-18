@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   myprintf.h                                         :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iduman <iduman@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 18:47:07 by iduman            #+#    #+#             */
-/*   Updated: 2025/06/16 18:54:05 by iduman           ###   ########.fr       */
+/*   Updated: 2025/06/18 18:53:41 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MYPRINTF_H
-# define MYPRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 # include <unistd.h>
 # include <stdarg.h>
+# define HEXB "0123456789ABCDEF"
+# define HEXL "0123456789abcdef"
 
 char	*ft_strchr(const char *s, int c);
 void	ft_putchar_counter(char c, int *count);
 void	ft_putstr_counter(const char *c, int *count);
-void	ft_putnbr_counter(int n, int *count);
-void	ft_puthex_counter(int n, int *count, char *base);
+void	ft_putnbr_counter(long long n, int *count);
+void	ft_puthex_counter(unsigned int n, int *count, char *base);
 void	ft_pointer_counter(size_t n, int *count, char *base);
-int		formatter(char c, int *count, va_list args);
+void	pointer_helper(void *pointer, int *count);
+void	formatter(char c, int *count, va_list args);
 int		ft_printf(const char *format, ...);
 
 #endif
