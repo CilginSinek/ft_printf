@@ -6,13 +6,20 @@
 /*   By: iduman <iduman@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 18:42:05 by iduman            #+#    #+#             */
-/*   Updated: 2025/06/18 19:27:02 by iduman           ###   ########.fr       */
+/*   Updated: 2025/06/23 14:13:41 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	pointer_helper(void *pointer, int *count)
+static void	ft_pointer_counter(size_t n, int *count, char *base)
+{
+	if (n >= 16)
+		ft_pointer_counter(n / 16, count, base);
+	ft_putchar_counter(base[n % 16], count);
+}
+
+static void	pointer_helper(void *pointer, int *count)
 {
 	if (pointer == NULL)
 		return (ft_putstr_counter("(nil)", count));
@@ -20,14 +27,7 @@ void	pointer_helper(void *pointer, int *count)
 	ft_pointer_counter((size_t)pointer, count, HEXL);
 }
 
-void	ft_pointer_counter(size_t n, int *count, char *base)
-{
-	if (n >= 16)
-		ft_pointer_counter(n / 16, count, base);
-	ft_putchar_counter(base[n % 16], count);
-}
-
-void	formatter(char c, int *count, va_list args)
+static void	formatter(char c, int *count, va_list args)
 {
 	if (c == 'c')
 		ft_putchar_counter((char)va_arg(args, int), count);
@@ -47,7 +47,7 @@ void	formatter(char c, int *count, va_list args)
 		ft_putchar_counter(c, count);
 }
 
-int	is_need_format(const char *format, va_list args, int *count)
+static int	is_need_format(const char *format, va_list args, int *count)
 {
 	if (*(format + 1))
 	{

@@ -6,12 +6,11 @@
 /*   By: iduman <iduman@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 16:58:18 by iduman            #+#    #+#             */
-/*   Updated: 2025/06/18 18:56:10 by iduman           ###   ########.fr       */
+/*   Updated: 2025/06/23 14:06:20 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 char	*ft_strchr(const char *s, int c)
 {
