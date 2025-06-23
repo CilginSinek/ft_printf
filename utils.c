@@ -6,7 +6,7 @@
 /*   By: iduman <iduman@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 16:58:18 by iduman            #+#    #+#             */
-/*   Updated: 2025/06/23 14:26:11 by iduman           ###   ########.fr       */
+/*   Updated: 2025/06/23 14:29:37 by iduman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_putstr_counter(const char *c, int *count)
 	}
 }
 
-void	ft_putnbr_counter(long long n, int *count)
+void	ft_putnbr_counter(long long int n, int *count)
 {
 	long long	nbr;
 
