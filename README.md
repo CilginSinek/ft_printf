@@ -67,7 +67,7 @@ The function mimics the behavior of the original `printf` by accepting a format 
 Clone the repository:
 
 ```bash
-git clone https://github.com/iduman/ft_printf.git
+git clone https://github.com/cilginsinek/ft_printf.git
 cd ft_printf
 ```
 
@@ -207,7 +207,7 @@ Fonksiyon, orijinal `printf` davranışını taklit ederek dönüşüm belirteç
 Projeyi klonlayın:
 
 ```bash
-git clone https://github.com/iduman/ft_printf.git
+git clone https://github.com/cilginsinek/ft_printf.git
 cd ft_printf
 ```
 
